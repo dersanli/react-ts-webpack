@@ -7,16 +7,6 @@
     "build": "webpack --config webpack.prod.config.ts",
     "test": "jest"
   },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>/jest-setup.ts"
-    ],
-    "moduleNameMapper": {
-      "\\.(css|less)$": "identity-obj-proxy",
-      "\\.(jpg|jpeg|png|gif)$": "<rootDir>/src/__mocks__/fileMock.ts"
-    },
-    "testEnvironment": "jsdom"
-  },
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -52,6 +42,7 @@
     "jest": "^27.4.7",
     "mini-css-extract-plugin": "^2.4.7",
     "style-loader": "^3.3.1",
+    "ts-jest": "^27.1.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4",
     "webpack": "^5.66.0",

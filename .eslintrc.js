@@ -15,10 +15,13 @@ module.exports = {
   rules: {
     semi: [2, 'always'],
     'object-curly-spacing': ['error', 'always'],
+    'no-multi-spaces': ['error', { ignoreEOLComments: false }],
+    'no-trailing-spaces': ['error', { 'ignoreComments': true }],
+    'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 0 }],
     indent: ['error', 2],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
-    'no-console': 'warn',
+    'no-console': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
