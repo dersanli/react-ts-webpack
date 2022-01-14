@@ -1,4 +1,8 @@
-import React from "react";
-import heading from "./heading.module.css";
+import React, { ReactElement } from 'react';
+import heading from './heading.module.css';
 
-export const Heading = () => <h1 className={heading.heading}>My React and TypeScript App</h1>;
+type HeadingProps = {
+    message: string
+};
+
+export const Heading = ({ message }: HeadingProps): ReactElement => <h1 className={heading.heading}>{message}</h1>;
