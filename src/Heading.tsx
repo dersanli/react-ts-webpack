@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import heading from './heading.module.css';
+import heading from './css/heading.module.css';
 
 type HeadingProps = {
     message: string

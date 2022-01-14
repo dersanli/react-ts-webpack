@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
-import car from './car.jpg';
-import content from './content.module.css';
+import car from './assets/car.jpg';
+import content from './css/content.module.css';
 
 type ContentProps = {
     altText? : string

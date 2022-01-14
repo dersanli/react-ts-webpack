@@ -15,9 +15,8 @@ module.exports = {
   // when using React Testing Library and adds special
   // extended assertions to Jest
   setupFilesAfterEnv: [
-    '<rootDir>/jest-setup.ts'
     //'@testing-library/react/cleanup-after-each',
-    //'@testing-library/jest-dom/extend-expect'
+    '@testing-library/jest-dom/extend-expect'
   ],
 
   // Test spec file resolution pattern
