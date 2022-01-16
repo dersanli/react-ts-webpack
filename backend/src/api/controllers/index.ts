@@ -1,2 +1,2 @@
-export * from './greetings';
-export * from './user';
+export * from '@dtc/api/controllers/greetings';
+export * from '@dtc/api/controllers/user';

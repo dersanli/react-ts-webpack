@@ -1,7 +1,7 @@
 import * as express from 'express';
 
-import UserService, { AuthResponse } from '../services/user';
-import { writeJsonResponse } from '../utils/express';
+import UserService, { AuthResponse } from '@dtc/api/services/user';
+import { writeJsonResponse } from '@dtc/api/utils/express';
 
 export function auth(req: express.Request, res: express.Response, next: express.NextFunction): void {
   const token = req.headers.authorization!;
