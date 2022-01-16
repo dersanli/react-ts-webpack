@@ -6,8 +6,8 @@ import Container from 'react-bootstrap/Container';
 
 import { Heading } from './Heading';
 import { Content } from './Content';
-import { FizzBuzz } from './FizzBuzz';
-import { LoginForm } from './LoginForm';
+import { FizzBuzz } from './components/fizzbuzz/FizzBuzz';
+import { LoginForm } from './components/loginform/LoginForm';
 import { Joke } from './components/joke/Joke';
 
 const noop = (e: any): void => console.log(e);
