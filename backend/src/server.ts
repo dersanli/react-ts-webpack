@@ -1,18 +1,18 @@
-import express from 'express'
-import * as OpenApiValidator from 'express-openapi-validator'
-import {Express} from 'express-serve-static-core'
-import {connector, summarise} from 'swagger-routes-express'
-import YAML from 'yamljs'
+import express from 'express';
+import * as OpenApiValidator from 'express-openapi-validator';
+import { Express } from 'express-serve-static-core';
+import { connector, summarise } from 'swagger-routes-express';
+import YAML from 'yamljs';
 
-import * as api from './api/controllers'
+import * as api from './api/controllers';
 
 export async function createServer(): Promise<Express> {
-  const yamlSpecFile = './config/openapi.yml'
-  const apiDefinition = YAML.load(yamlSpecFile)
-  const apiSummary = summarise(apiDefinition)
-  console.info(apiSummary)
+  const yamlSpecFile = './config/openapi.yml';
+  const apiDefinition = YAML.load(yamlSpecFile);
+  const apiSummary = summarise(apiDefinition);
+  console.info(apiSummary);
 
-  const server = express()
+  const server = express();
   // here we can initialize body/cookies parsers, connect logger, for example morgan
 
   // setup API validator
@@ -20,11 +20,12 @@ export async function createServer(): Promise<Express> {
     apiSpec: yamlSpecFile,
     validateRequests: true,
     validateResponses: true
-  }
-//   await new OpenApiValidator(validatorOptions).install(server) // if version 3.*
-  server.use(OpenApiValidator.middleware(validatorOptions))
+  };
+
+  server.use(OpenApiValidator.middleware(validatorOptions));
 
   // error customization, if request is invalid
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   server.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
     res.status(err.status).json({
       error: {
@@ -32,19 +33,19 @@ export async function createServer(): Promise<Express> {
         message: err.message,
         errors: err.errors
       }
-    })
-  })
+    });
+  });
 
   const connect = connector(api, apiDefinition, {
     onCreateRoute: (method: string, descriptor: any[]) => {
-      descriptor.shift()
-      console.log(`${method}: ${descriptor.map((d: any) => d.name).join(', ')}`)
+      descriptor.shift();
+      console.log(`${method}: ${descriptor.map((d: any) => d.name).join(', ')}`);
     },
     security: {
       bearerAuth: api.auth
     }
-  })
-  connect(server)
+  });
+  connect(server);
 
-  return server
+  return server;
 }

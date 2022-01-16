@@ -7,15 +7,16 @@ export type AuthResponse = ErrorResponse | {userId: string}
  */
 
 function auth(bearerToken: string): Promise<AuthResponse> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return new Promise(function(resolve, reject) {
-    const token = bearerToken.replace('Bearer ', '')
+    const token = bearerToken.replace('Bearer ', '');
     if (token === 'fakeToken') {
-      resolve({userId: 'fakeUserId'})
-      return
+      resolve({ userId: 'fakeUserId' });
+      return;
     }
 
-    resolve({error: {type: 'unauthorized', message: 'Authentication Failed'}})
-  })
+    resolve({ error: { type: 'unauthorized', message: 'Authentication Failed' } });
+  });
 }
 
-export default {auth: auth}
+export default { auth: auth };
